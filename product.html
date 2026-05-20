@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bottle-top Dispensers Dispensette® S, analog-adjustable, DE-M – Omsons</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --brand-blue: #1b3f73;
+            --brand-teal: #009bbd;
+            --accent-orange: #f5a800;
+            --accent-green: #4caf50;
+            --light-bg: #f4f7fb;
+            --border: #dce3ec;
+            --text-primary: #1a2332;
+            --text-secondary: #5a6a7e;
+            --text-muted: #8fa0b3;
+            --white: #ffffff;
+            --row-alt: #f9fbfd;
+            --header-table: #e8eef6;
+            --nav-bottom: #1a3a6b;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ═══ TOP UTILITY BAR ═══ */
+        .topbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 5px 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+            gap: 6px;
+        }
+
+        .topbar a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: var(--brand-blue);
+        }
+
+        .topbar .region-selector {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .topbar .region-selector svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* ═══ MAIN NAVBAR ═══ */
+        .navbar-main {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            min-height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Logo */
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 48px;
+            text-decoration: none;
+            flex-shrink: 0;
+            padding: 10px 0;
+        }
+
+        .navbar-logo img {
+            height: 58px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Top-level text links (Promotions / Contact) */
+        .navbar-text-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-right: 32px;
+        }
+
+        .navbar-text-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--brand-blue);
+            text-decoration: none;
+            padding: 0 18px;
+            position: relative;
+        }
+
+        .navbar-text-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--accent-orange);
+            transform: scaleX(0);
+            transition: transform 0.2s;
+        }
+
+        .navbar-text-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Search bar */
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            max-width: 520px;
+            border: 1.5px solid #c8d0db;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .navbar-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px 16px;
+            font-size: 13.5px;
+            font-family: inherit;
+            color: var(--text-primary);
+            background: transparent;
+        }
+
+        .navbar-search input::placeholder {
+            color: #aab3bf;
+        }
+
+        .navbar-search button {
+            background: var(--accent-orange);
+            border: none;
+            padding: 10px 22px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: inherit;
+            transition: background 0.18s;
+            white-space: nowrap;
+        }
+
+        .navbar-search button:hover {
+            background: #d4900a;
+        }
+
+        /* Right action icons */
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 28px;
+            flex-shrink: 0;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.15s;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .action-item:hover {
+            background: var(--light-bg);
+        }
+
+        .action-item .icon-wrap {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .action-item svg {
+            width: 26px;
+            height: 26px;
+            color: #4a5568;
+        }
+
+        .action-item span {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--accent-orange);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon-wrap svg {
+            color: var(--accent-orange);
+        }
+
+        /* Brand tagline banner */
+        .brand-tagline {
+            background: var(--brand-teal);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 3px 0 0 3px;
+            white-space: nowrap;
+            margin-left: 6px;
+            letter-spacing: 0.2px;
+        }
+
+        /* ═══ NAV MENU BAR ═══ */
+        .navbar-menu {
+            background: var(--nav-bottom);
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            position: sticky;
+            top: 80px;
+            z-index: 199;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar-menu ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu ul li a {
+            display: block;
+            padding: 14px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.88);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.18s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .navbar-menu ul li a:hover,
+        .navbar-menu ul li a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom-color: var(--accent-orange);
+        }
+
+        /* ═══ BREADCRUMB ═══ */
+        .breadcrumb {
+            padding: 10px 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb a {
+            color: var(--brand-teal);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 6px;
+            color: #c0c8d4;
+        }
+
+        /* ═══ MAIN LAYOUT ═══ */
+        .main-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 28px 24px 60px;
+        }
+
+        /* ═══ PRODUCT HERO ═══ */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 36px;
+            box-shadow: 0 2px 16px rgba(0, 62, 126, 0.07);
+            margin-bottom: 28px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .gallery-main {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fafbfc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 280px;
+        }
+
+        .prod-img-placeholder {
+            width: 120px;
+            height: 260px;
+            background: linear-gradient(180deg, #e0e8f0 0%, #c8d8e8 100%);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .prod-img-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #a0b8cc;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .prod-img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 180px;
+            background: linear-gradient(180deg, #7a9ab0 0%, #4a7090 100%);
+            border-radius: 3px;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            background: #f0f4f8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            transition: border-color 0.2s;
+        }
+
+        .thumb:hover,
+        .thumb.active {
+            border-color: var(--brand-teal);
+        }
+
+        .thumb.active {
+            background: #e8f5f9;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .product-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 26px;
+            color: var(--brand-blue);
+            line-height: 1.3;
+        }
+
+        .product-title sup {
+            font-size: 14px;
+        }
+
+        .product-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13.5px;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            padding: 14px;
+            background: var(--light-bg);
+            border-left: 3px solid var(--brand-teal);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .customise-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .customise-section label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .option-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .opt-btn {
+            padding: 6px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            background: white;
+            font-size: 12px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.18s;
+            color: var(--text-primary);
+        }
+
+        .opt-btn:hover,
+        .opt-btn.active {
+            border-color: var(--brand-teal);
+            background: #e8f5f9;
+            color: var(--brand-teal);
+        }
+
+        .buy-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--brand-teal);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #007a95;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--brand-blue);
+            border: 1.5px solid var(--brand-blue);
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* ═══ SECTIONS ═══ */
+        .section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 28px 32px;
+            box-shadow: 0 2px 12px rgba(0, 62, 126, 0.06);
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 20px;
+            color: var(--brand-blue);
+        }
+
+        .section-toggle {
+            width: 28px;
+            height: 28px;
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .section-toggle:hover {
+            background: var(--brand-teal);
+            color: white;
+            border-color: var(--brand-teal);
+        }
+
+        .section.collapsed>*:not(.section-header) {
+            display: none;
+        }
+
+        /* ═══ MODELS TABLE ═══ */
+        .models-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+        }
+
+        .models-table thead tr {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        .models-table thead th {
+            padding: 11px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .models-table thead th:first-child {
+            text-align: left;
+            padding-left: 14px;
+            border-radius: 6px 0 0 0;
+        }
+
+        .models-table thead th:last-child {
+            border-radius: 0 6px 0 0;
+        }
+
+        .models-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        .models-table tbody tr:nth-child(even) {
+            background: var(--row-alt);
+        }
+
+        .models-table tbody tr:hover {
+            background: #eef4f9;
+        }
+
+        .models-table td {
+            padding: 10px;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .models-table td:first-child {
+            text-align: left;
+            padding-left: 14px;
+            font-weight: 600;
+            color: var(--brand-blue);
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        .price-new {
+            color: #e85d04;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .price-regular {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .btn-cart {
+            background: var(--brand-teal);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.18s;
+        }
+
+        .btn-cart:hover {
+            background: #007a95;
+        }
+
+        .btn-quote {
+            background: white;
+            color: var(--brand-blue);
+            border: 1.5px solid var(--brand-blue);
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.18s;
+        }
+
+        .btn-quote:hover {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* ═══ ACCESSORIES ═══ */
+        .acc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+        }
+
+        .acc-table thead tr {
+            background: var(--header-table);
+        }
+
+        .acc-table thead th {
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--brand-blue);
+            font-size: 12px;
+        }
+
+        .acc-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        .acc-table tbody tr:hover {
+            background: #f0f7fb;
+        }
+
+        .acc-table td {
+            padding: 10px 14px;
+        }
+
+        .acc-table td:last-child {
+            text-align: right;
+        }
+
+        .acc-table .qty-cell {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 11px;
+            width: 40px;
+        }
+
+        .link-blue {
+            color: var(--brand-teal);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .link-blue:hover {
+            text-decoration: underline;
+        }
+
+        .btn-product-link {
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 5px 11px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        /* ═══ SELECTION CHARTS ═══ */
+        .chart-cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .chart-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            width: 140px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--light-bg);
+        }
+
+        .chart-card:hover {
+            border-color: var(--brand-teal);
+            background: #eef8fb;
+        }
+
+        .chart-card .chart-icon {
+            width: 80px;
+            height: 70px;
+            margin: 0 auto 8px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .chart-card p {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ═══ VIDEOS ═══ */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .video-card {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 62, 126, 0.12);
+        }
+
+        .video-thumb {
+            height: 110px;
+            background: linear-gradient(135deg, #1a3a5c 0%, #005f88 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .video-label {
+            padding: 10px 12px;
+            background: white;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* ═══ RELATED PRODUCTS ═══ */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background: var(--light-bg);
+            transition: all 0.2s;
+        }
+
+        .related-card:hover {
+            border-color: var(--brand-teal);
+            box-shadow: 0 4px 16px rgba(0, 155, 189, 0.1);
+        }
+
+        .related-card .rel-img {
+            width: 70px;
+            height: 80px;
+            background: linear-gradient(180deg, #dde6ef 0%, #bbc8d8 100%);
+            border-radius: 6px;
+            margin: 0 auto 12px;
+        }
+
+        .related-card h4 {
+            font-size: 13px;
+            color: var(--brand-blue);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .related-card p {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* ═══ FOOTER ═══ */
+        footer {
+            background: var(--brand-blue);
+            color: #8fb3d4;
+            padding: 32px;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: #8fb3d4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        footer .social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        footer .soc-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        footer .soc-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 16px 0;
+        }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 1024px) {
+            .navbar-text-links {
+                display: none;
+            }
+
+            .navbar-main {
+                padding: 0 20px;
+            }
+
+            .navbar-menu {
+                padding: 0 20px;
+                top: 80px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .product-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .models-table {
+                font-size: 11px;
+            }
+
+            .navbar-menu ul li a {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ TOP UTILITY BAR ═══ -->
+    <div class="topbar">
+        <div class="region-selector">
+            Europe – EN
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="2,4 6,8 10,4" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- ═══ MAIN NAVBAR ═══ -->
+    <header class="navbar-main">
+        <!-- Logo -->
+        <a class="navbar-logo" href="index.html">
+            <img src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779264138/omsons_t6lwp1.jpg" alt="Omsons" />
+        </a>
+
+        <!-- Promotions / Contact links -->
+        <nav class="navbar-text-links">
+            <a href="#">Promotions</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <!-- Search bar -->
+        <div class="navbar-search">
+            <input type="text" placeholder="Find your favorite product…" />
+            <button>SEARCH</button>
+        </div>
+
+        <!-- Right-side icons -->
+        <div class="navbar-actions">
+            <!-- Your Account -->
+            <a class="action-item" href="#">
+                <div class="icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </div>
+                <span>Your Account</span>
+            </a>
+            <!-- Cart -->
+            <a class="action-item" href="#">
+                <div class="icon-wrap cart-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                    <div class="cart-badge">0</div>
+                </div>
+                <span>Cart</span>
+            </a>
+            <!-- Brand tagline -->
+            <div class="brand-tagline">Omsons. For lab. For life.®</div>
+        </div>
+    </header>
+
+    <!-- ═══ NAV MENU BAR ═══ -->
+    <nav class="navbar-menu">
+        <ul>
+            <li><a href="#" class="active">Liquid Handling</a></li>
+            <li><a href="#">Pipetting robots</a></li>
+            <li><a href="#">Life Science Consumables</a></li>
+            <li><a href="#">Volumetric Instruments</a></li>
+            <li><a href="#">General Lab Products</a></li>
+            <li><a href="#">Promotions</a></li>
+            <li><a href="#">OEM</a></li>
+            <li><a href="#">Certificates</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══ BREADCRUMB ═══ -->
+    <div class="breadcrumb">
+        <a href="#">Home</a><span>›</span>
+        <a href="#">Liquid Handling</a><span>›</span>
+        <a href="#">Bottle-top Dispensers</a><span>›</span>
+        <span style="color:var(--text-primary)">Dispensette® S, analog-adjustable, DE-M</span>
+    </div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="main-wrap">
+
+        <!-- PRODUCT HERO -->
+        <div class="product-hero">
+            <!-- Gallery -->
+            <div class="gallery">
+                <div class="gallery-main">
+                    <div class="prod-img-placeholder"></div>
+                </div>
+                <div class="gallery-thumbs">
+                    <div class="thumb active">Front</div>
+                    <div class="thumb">Side</div>
+                    <div class="thumb">Detail</div>
+                    <div class="thumb">Use</div>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="product-info">
+                <span class="product-badge">✔ In Stock · DE-M Verified</span>
+                <h1 class="product-title">Bottle-top Dispensers Dispensette<sup>®</sup> S,<br />analog-adjustable, DE-M
+                </h1>
+                <p class="product-subtitle">High-precision, chemically resistant bottle-top dispenser with analog volume
+                    adjustment and ATEX certification</p>
+
+                <ul class="features-list">
+                    <li>Simply adjustable to any volume by analog setting – with safe-lock function</li>
+                    <li>With efficient, adjustable intake tube dispenser</li>
+                    <li>Precisely calibrated – satisfies highest requirements of accuracy and precision</li>
+                    <li>Available with or without recirculation valve</li>
+                    <li>ATEX certification for use in potentially explosive environments</li>
+                    <li>Autoclavable at 121 °C / 15 min (PTFE/glass version)</li>
+                </ul>
+
+                <p class="product-description">
+                    Dispensette® S is the standard bottle-top dispenser that dispenses only pure, non-acidic media. With
+                    its analogue adjustable volume setting and high-quality materials (FEP or glass/PTFE), it offers
+                    laboratory-grade precision for daily dispensing routines. The DE-M marking confirms metrological
+                    verification according to German calibration regulations.
+                </p>
+
+                <div class="customise-section">
+                    <label>Volume Range</label>
+                    <div class="option-row">
+                        <button class="opt-btn active">0.5 – 5 ml</button>
+                        <button class="opt-btn">1 – 10 ml</button>
+                        <button class="opt-btn">2 – 20 ml</button>
+                        <button class="opt-btn">5 – 50 ml</button>
+                        <button class="opt-btn">10 – 100 ml</button>
+                    </div>
+                </div>
+
+                <div class="customise-section">
+                    <label>Material</label>
+                    <div class="option-row">
+                        <button class="opt-btn active">FEP/Borosilicate</button>
+                        <button class="opt-btn">Glass/PTFE</button>
+                    </div>
+                </div>
+
+                <div class="buy-actions">
+                    <button class="btn-primary">🛒 Add to Basket</button>
+                    <button class="btn-secondary">📋 Request Quote</button>
+                    <button class="btn-secondary">📄 Datasheet</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODELS TABLE -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Models</h2>
+                <button class="section-toggle">⊕</button>
+            </div>
+            <div style="overflow-x:auto">
+                <table class="models-table">
+                    <thead>
+                        <tr>
+                            <th>Order No.</th>
+                            <th>Volume Range (ml)</th>
+                            <th>Graduation (ml)</th>
+                            <th>Min. Graduation (ml)</th>
+                            <th>Accuracy (%)</th>
+                            <th>Precision CV (%)</th>
+                            <th>Recirculation Valve</th>
+                            <th>UN Package</th>
+                            <th>Export</th>
+                            <!-- <th>Price (₹)</th> -->
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4040111</td>
+                            <td>0.5 – 5</td>
+                            <td>0.1</td>
+                            <td>0.05</td>
+                            <td>±1.0</td>
+                            <td>0.3</td>
+                            <td>No</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <!-- <td class="price-regular">296.79 ₹</td> -->
+                            <!-- <td><button class="btn-cart">Add to Cart</button></td> -->
+                            <!-- <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040211</td>
+                            <td>1 – 10</td>
+                            <td>0.2</td>
+                            <td>0.1</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>No</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <!-- <td><span class="price-old">274.00 ₹</span><br /><span class="price-new">242.50 ₹</span>
+                            </td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040311</td>
+                            <td>2 – 20</td>
+                            <td>0.5</td>
+                            <td>0.2</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>No</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <!-- <td class="price-regular">256.79 ₹</td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040411</td>
+                            <td>5 – 50</td>
+                            <td>1.0</td>
+                            <td>0.5</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>No</td>
+                            <td>cylinder</td>
+                            <td>—</td>
+                            <!-- <td><span class="price-old">317.00 ₹</span><br /><span class="price-new">269.99 ₹</span>
+                            </td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040511</td>
+                            <td>10 – 100</td>
+                            <td>2.0</td>
+                            <td>1.0</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>No</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <!-- <td class="price-regular">304.10 ₹</td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040511T</td>
+                            <td>10 – 100</td>
+                            <td>2.0</td>
+                            <td>1.0</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>No</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <!-- <td class="price-regular">306.73 ₹</td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040121</td>
+                            <td>1 – 10 + RV</td>
+                            <td>0.2</td>
+                            <td>0.1</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>Yes</td>
+                            <td>UN3800</td>
+                            <td>—</td>
+                            <!-- <td><span class="price-old">340.00 ₹</span><br /><span class="price-new">328.95 ₹</span>
+                            </td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040221</td>
+                            <td>2 – 20 + RV</td>
+                            <td>0.5</td>
+                            <td>0.2</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>Yes</td>
+                            <td>UN3800</td>
+                            <td>25 L</td>
+                            <!-- <td><span class="price-old">382.10 ₹</span><br /><span class="price-new">347.55 ₹</span>
+                            </td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040321</td>
+                            <td>5 – 50 + RV</td>
+                            <td>1.0</td>
+                            <td>0.5</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>Yes</td>
+                            <td>UN3800</td>
+                            <td>25 L</td>
+                            <!-- <td><span class="price-old">354.20 ₹</span><br /><span class="price-new">394.30 ₹</span>
+                            </td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040421</td>
+                            <td>10 – 100 + RV</td>
+                            <td>2.0</td>
+                            <td>1.0</td>
+                            <td>±0.5</td>
+                            <td>0.2</td>
+                            <td>Yes</td>
+                            <td>Low Pack</td>
+                            <td>—</td>
+                            <!-- <td class="price-regular">396.22 ₹</td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                        <tr>
+                            <td>4040521</td>
+                            <td>20 – 100 + RV</td>
+                            <td>2.0</td>
+                            <td>1.0</td>
+                            <td>±0.5</td>
+                            <td>0.15</td>
+                            <td>Yes</td>
+                            <td>PETG</td>
+                            <td>—</td>
+                            <!-- <td><span class="price-old">417.10 ₹</span><br /><span class="price-new">388.95 ₹</span>
+                            </td>
+                            <td><button class="btn-cart">Add to Cart</button></td>
+                            <td><button class="btn-quote">Quote</button></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right">* Prices exclude GST. RV
+                = Recirculation Valve included. Prices subject to change.</p>
+        </div>
+
+        <!-- ITEMS SUPPLIED -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Items Supplied</h2>
+                <button class="section-toggle">⊕</button>
+            </div>
+            <p style="font-size:13px;color:var(--text-secondary)">Each Dispensette® S unit is delivered complete and
+                ready for use, including:</p>
+            <ul style="margin-top:12px;list-style:none;display:flex;flex-direction:column;gap:8px;">
+                <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
+                        style="color:var(--brand-teal)">▸</span> Bottle-top dispenser unit (assembled)</li>
+                <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
+                        style="color:var(--brand-teal)">▸</span> Adjustable intake tube</li>
+                <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
+                        style="color:var(--brand-teal)">▸</span> Safety discharge tube</li>
+                <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
+                        style="color:var(--brand-teal)">▸</span> Bottle adapter (GL 45)</li>
+                <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
+                        style="color:var(--brand-teal)">▸</span> Calibration certificate (DE-M)</li>
+                <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
+                        style="color:var(--brand-teal)">▸</span> Operating instructions (DE / EN / FR)</li>
+            </ul>
+        </div>
+
+        <!-- ACCESSORIES & SPARE PARTS -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Accessories &amp; Spare Parts</h2>
+                <button class="section-toggle">⊕</button>
+            </div>
+            <table class="acc-table">
+                <thead>
+                    <tr>
+                        <th>Qty</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Bottle-bore Dispensette® Protect, M</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Tip guard for Dispensette® (PP)</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">10</td>
+                        <td><a href="#" class="link-blue">Porous exchange tubing PTFE, Dispensette® S, 1.1 × 1 mm,
+                                4-from model</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Small conversion socket dispenser</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">1</td>
+                        <td><a href="#" class="link-blue">Spray tube valve Dispensette® S, Dispensette® III / 0.5 ml
+                                Dispensette tube</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Microfibrous cloth PTFE, Dispensette®</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">1</td>
+                        <td><a href="#" class="link-blue">Auxiliary tube dispenser, Dispensette® S, 10 ml Ricon
+                                model</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Microfibrous auxilium tube Dispensette® S "Retool"</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">1</td>
+                        <td><a href="#" class="link-blue">Laboratory adjustable tube Dispensette® S, 0.5–0.7 Slav
+                                model</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Waste Dispenser for Omsons® S Eco S (+ Retool)</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                    <tr>
+                        <td class="qty-cell">—</td>
+                        <td><a href="#" class="link-blue">Margin kit Dispensette® S "Retool"</a></td>
+                        <td><button class="btn-product-link">VIEW PRODUCT ›</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SELECTION CHARTS -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Selection Charts</h2>
+                <button class="section-toggle">⊕</button>
+            </div>
+            <div class="chart-cards">
+                <div class="chart-card">
+                    <div class="chart-icon">📊</div>
+                    <p>Chemical chart</p>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-icon">📋</div>
+                    <p>Adapter chart</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEOS -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Videos</h2>
+                <button class="section-toggle">⊕</button>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumb">▶</div>
+                    <div class="video-label">Dispensette® S – Product Introduction</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb">▶</div>
+                    <div class="video-label">Correct filling and dispensing technique</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb">▶</div>
+                    <div class="video-label">Cleaning &amp; maintenance guide</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOWNLOADS -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Downloads</h2>
+                <button class="section-toggle">⊕</button>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <a href="#"
+                    style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:var(--light-bg);transition:border-color 0.2s"
+                    onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄
+                    Operating Manual (EN/DE)</a>
+                <a href="#"
+                    style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:var(--light-bg);transition:border-color 0.2s"
+                    onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄 CE
+                    Declaration</a>
+                <a href="#"
+                    style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:var(--light-bg);transition:border-color 0.2s"
+                    onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄
+                    Calibration Certificate</a>
+                <a href="#"
+                    style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:var(--light-bg);transition:border-color 0.2s"
+                    onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄 ATEX
+                    Certificate</a>
+            </div>
+        </div>
+
+        <!-- RELATED PRODUCTS -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title" style="width:100%;text-align:center">Related Products</h2>
+            </div>
+            <div class="related-grid">
+                <div class="related-card">
+                    <div class="rel-img"></div>
+                    <h4>Dispensette® S Organic</h4>
+                    <p>For aggressive solvents &amp; organic media</p>
+                    <button class="btn-primary" style="font-size:12px;padding:8px 16px">VIEW PRODUCT</button>
+                </div>
+                <div class="related-card">
+                    <div class="rel-img" style="background:linear-gradient(180deg,#ddf0dd 0%,#b8d8b8 100%)"></div>
+                    <h4>Seripettor® Pro</h4>
+                    <p>Bottle-top dispenser, electronic digital</p>
+                    <button class="btn-primary" style="font-size:12px;padding:8px 16px">VIEW PRODUCT</button>
+                </div>
+                <div class="related-card">
+                    <div class="rel-img" style="background:linear-gradient(180deg,#f0e8dd 0%,#d8c4b8 100%)"></div>
+                    <h4>Bottle-top Burette</h4>
+                    <p>Analog digital titration burette</p>
+                    <button class="btn-primary" style="font-size:12px;padding:8px 16px">VIEW PRODUCT</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Imprint</a>
+            <a href="#">Shipping &amp; Returns</a>
+            <a href="#">Catalog</a>
+        </div>
+        <div class="social">
+            <div class="soc-btn">f</div>
+            <div class="soc-btn">in</div>
+            <div class="soc-btn">yt</div>
+            <div class="soc-btn">x</div>
+        </div>
+        <div class="divider"></div>
+        <p>© 2025 Omsons India Pvt. Ltd. · All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Option button toggle
+        document.querySelectorAll('.option-row').forEach(row => {
+            row.querySelectorAll('.opt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    row.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+
+        // Gallery thumb toggle
+        document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => {
+            t.addEventListener('click', () => {
+                document.querySelectorAll('.gallery-thumbs .thumb').forEach(x => x.classList.remove('active'));
+                t.classList.add('active');
+            });
+        });
+
+        // Section collapse/expand toggle
+        document.querySelectorAll('.section-toggle').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const section = this.closest('.section');
+                if (section) section.classList.toggle('collapsed');
+                this.textContent = section.classList.contains('collapsed') ? '⊞' : '⊕';
+            });
+        });
+    </script>
+</body>
+
+</html>

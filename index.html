@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OMSONS – Life Science & Liquid Handling</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #1a2d4f;
+            --blue: #1a6eb5;
+            --cyan: #0099cc;
+            --accent: #e8b800;
+            --red: #c0392b;
+            --light: #f4f7fb;
+            --mid: #dde6f0;
+            --text: #222831;
+            --muted: #6b7a8d;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sr {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(.22, 1, .36, 1), transform 0.7s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .sr.d1 {
+            transition-delay: 0.10s;
+        }
+
+        .sr.d2 {
+            transition-delay: 0.20s;
+        }
+
+        .sr.d3 {
+            transition-delay: 0.32s;
+        }
+
+        .sr.d4 {
+            transition-delay: 0.44s;
+        }
+
+        .sr.d5 {
+            transition-delay: 0.56s;
+        }
+
+        .sr.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* TOP BAR */
+        .topbar {
+            background: var(--navy);
+            color: #ccd6e8;
+            font-size: 12px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            padding: 5px 24px;
+        }
+
+        .topbar a {
+            color: #ccd6e8;
+        }
+
+        .topbar a:hover {
+            color: var(--white);
+        }
+
+        .topbar select {
+            background: transparent;
+            border: none;
+            color: #ccd6e8;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 10px 24px;
+            background: var(--white);
+            border-bottom: 1px solid var(--mid);
+        }
+
+        .logo {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .search-wrap {
+            flex: 1;
+            display: flex;
+            max-width: 560px;
+            border: 2px solid var(--mid);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .search-wrap input {
+            flex: 1;
+            border: none;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .search-wrap button {
+            background: var(--accent);
+            color: var(--navy);
+            border: none;
+            padding: 8px 22px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .header-actions div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+        }
+
+        .header-actions div:hover {
+            color: var(--blue);
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--navy);
+            position: relative;
+            z-index: 100;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .nav-list>li {
+            position: relative;
+        }
+
+        .nav-list>li>a {
+            display: block;
+            padding: 13px 16px;
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .3px;
+            transition: background .15s;
+            white-space: nowrap;
+        }
+
+        .nav-list>li:hover>a {
+            background: var(--blue);
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+            border-top: 3px solid var(--blue);
+            min-width: 240px;
+            z-index: 200;
+            padding: 8px 0;
+        }
+
+        .dropdown.wide {
+            min-width: 480px;
+        }
+
+        .dropdown.wide .cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 9px 22px;
+            font-size: 13px;
+            color: var(--text);
+            transition: background .1s, color .1s;
+        }
+
+        .dropdown a:hover {
+            background: var(--light);
+            color: var(--blue);
+        }
+
+        .nav-list>li:hover .dropdown {
+            display: block;
+        }
+
+        /* HERO */
+        .hero {
+            background: url('https://res.cloudinary.com/dzrg0utcm/image/upload/v1779268731/ChatGPT_Image_May_20_2026_02_48_31_PM_admixd.png') center/cover no-repeat;
+            color: var(--white);
+            padding: 40px 40px 40px 60px;
+            display: flex;
+            align-items: center;
+            min-height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text h1 {
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+        }
+
+        .hero-text p {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: .85;
+        }
+
+        .hero-sale {
+            position: absolute;
+            right: 80px;
+            font-size: 140px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .08);
+            letter-spacing: -4px;
+            user-select: none;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .badge-sale {
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            background: var(--red);
+            color: var(--white);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 28px;
+            letter-spacing: .5px;
+        }
+
+        /* RECS */
+        .recs-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 32px;
+        }
+
+        .products-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .product-card {
+            border: 1px solid var(--mid);
+            border-radius: 4px;
+            padding: 14px;
+            text-align: center;
+            transition: box-shadow .2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--red);
+            color: var(--white);
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 2px;
+            letter-spacing: .5px;
+        }
+
+        .product-img-placeholder {
+            width: 200px;
+            height: 180px;
+            margin: 0 auto 8px;
+            background: var(--light);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            overflow: hidden;
+        }
+
+        .product-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .product-card p {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+
+        .btn-product {
+            display: inline-block;
+            margin-top: 10px;
+            background: var(--blue);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 2px;
+            letter-spacing: .5px;
+        }
+
+        .help-box {
+            border: 1px solid var(--mid);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        .help-box h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 14px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--mid);
+        }
+
+        .help-item:last-child {
+            border-bottom: none;
+        }
+
+        .help-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            color: var(--blue);
+        }
+
+        .help-item-text strong {
+            display: block;
+            font-size: 13px;
+            color: var(--navy);
+        }
+
+        .help-item-text a {
+            font-size: 11px;
+            color: var(--blue);
+        }
+
+        /* CATEGORIES */
+        .cat-section {
+            background: var(--light);
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--mid);
+            transition: box-shadow .2s;
+            cursor: pointer;
+        }
+
+        .cat-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+        }
+
+        .cat-img {
+            height: 130px;
+            background: linear-gradient(135deg, #e8f2fc, #cce0f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .cat-card h4 {
+            padding: 10px 12px 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .cat-card .btn-product {
+            margin: 0 12px 12px;
+            display: block;
+            text-align: center;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .service-card {
+            padding: 20px 16px;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--white);
+            margin: 0 auto 12px;
+        }
+
+        .service-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .service-card p {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .service-card a {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        /* WHY OMSONS */
+        .why-omsons {
+            background: var(--navy);
+            color: var(--white);
+            padding: 70px 60px;
+        }
+
+        .why-omsons .why-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-omsons .why-heading {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .why-omsons h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .why-omsons h2 span {
+            color: var(--blue);
+        }
+
+        .why-omsons .why-lead {
+            font-size: 16px;
+            color: #a8bfd4;
+            max-width: 640px;
+            line-height: 1.7;
+            margin-bottom: 52px;
+        }
+
+        .why-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .why-pillar {
+            border-left: 3px solid var(--blue);
+            padding-left: 20px;
+        }
+
+        .why-pillar .pillar-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .why-pillar h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: .3px;
+        }
+
+        .why-pillar p {
+            font-size: 13px;
+            color: #8fa3be;
+            line-height: 1.65;
+        }
+
+        .why-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 56px;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding-top: 40px;
+        }
+
+        .why-stat {
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, .1);
+            padding: 0 20px;
+        }
+
+        .why-stat:last-child {
+            border-right: none;
+        }
+
+        .why-stat .num {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .why-stat .label {
+            font-size: 12px;
+            color: #8fa3be;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        /* SALES NETWORK */
+        .sales-network {
+            background: var(--white);
+            padding: 70px 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--mid);
+        }
+
+        .sales-network .reveal-text {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(.22, 1, .36, 1), transform 0.75s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .sales-network .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sales-network .reveal-text.delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .sales-network .reveal-text.delay-2 {
+            transition-delay: 0.30s;
+        }
+
+        .sales-network h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .sales-network .sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        .map-wrap {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .map-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .distributor-img-wrap {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(16px);
+            opacity: 0;
+            transition: opacity 0.6s ease 0.9s, transform 0.6s ease 0.9s;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(26, 45, 79, .18);
+            max-width: 220px;
+        }
+
+        .distributor-img-wrap.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .distributor-img {
+            width: 100%;
+            height: 100px;
+            display: block;
+        }
+
+        /* ══════════════════════════════════
+           VIDEO SECTION
+        ══════════════════════════════════ */
+        .video-section {
+            background: var(--light);
+            padding: 60px 40px 70px;
+            border-top: 1px solid var(--mid);
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: .5px;
+            margin-bottom: 8px;
+        }
+
+        .video-sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 36px;
+        }
+
+        .video-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.85s cubic-bezier(.22, 1, .36, 1), transform 0.85s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .video-wrap.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 4px var(--blue),
+                0 0 0 8px rgba(26, 110, 181, 0.15),
+                0 28px 64px rgba(26, 45, 79, 0.25);
+            background: #000;
+            line-height: 0;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        /* FOOTER */
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            padding: 40px;
+            background: var(--white);
+            border-top: 2px solid var(--mid);
+        }
+
+        .footer-cols h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .footer-cols p {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 0 40px 32px;
+        }
+
+        .footer-nav h5 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .footer-nav a {
+            display: block;
+            font-size: 12px;
+            color: var(--muted);
+            padding: 2px 0;
+        }
+
+        .footer-nav a:hover {
+            color: var(--blue);
+        }
+
+        .footer-bottom {
+            background: var(--navy);
+            color: #8fa3be;
+            font-size: 11px;
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-bottom a {
+            color: #8fa3be;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .pay-badge {
+            background: var(--white);
+            color: var(--navy);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--mid);
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <a href="#">Promotions</a>
+        <a href="#">Contact</a>
+        <select>
+            <option>Europe – EN ▾</option>
+            <option>Europe – DE</option>
+            <option>USA – EN</option>
+        </select>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo"><img src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779264138/omsons_t6lwp1.jpg"
+                alt="OMSONS Logo" style="height: 60px; width: auto;"></div>
+        <div class="search-wrap">
+            <input type="text" placeholder="Find your favorite product…" />
+            <button>SEARCH</button>
+        </div>
+        <div class="header-actions">
+            <div><span class="icon">👤</span>Your Account</div>
+            <div><span class="icon">🛒</span>Cart</div>
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav>
+        <ul class="nav-list">
+            <li>
+                <a href="#">Liquid Handling</a>
+                <div class="dropdown">
+                    <a href="#">Bottle-top dispensers</a><a href="#">Bottle-top burettes</a>
+                    <a href="#">Micropipettes</a><a href="#">Tips</a>
+                    <a href="#">Pipetting aids</a><a href="#">Repetitive pipettes</a>
+                    <a href="#">PD-Tips</a><a href="#">Positive displacement pipettes</a>
+                    <a href="#">Aspirators</a><a href="#">Pipette leak testing units</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Pipetting robots</a>
+                <div class="dropdown">
+                    <a href="#">PIPETBOY acu 2</a><a href="#">HandyStep® touch</a>
+                    <a href="#">Transferpette® S</a><a href="#">Ovation® Pipette System</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Life Science Consumables</a>
+                <div class="dropdown">
+                    <a href="#">Microcentrifuge tubes</a><a href="#">PCR consumables</a>
+                    <a href="#">Sample storage</a><a href="#">Microplates and multiwell plates</a>
+                    <a href="#">Life Science Sealing films</a><a href="#">Cell culture inserts</a>
+                    <a href="#">Cuvettes</a><a href="#">Media bottles</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Volumetric Instruments</a>
+                <div class="dropdown">
+                    <a href="#">Volumetric flasks</a><a href="#">Bulb pipettes</a>
+                    <a href="#">Graduated pipettes</a><a href="#">Graduated cylinders</a>
+                    <a href="#">Mixing cylinders</a><a href="#">Burettes</a><a href="#">Automatic burettes</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">General Lab Products</a>
+                <div class="dropdown wide">
+                    <div class="cols">
+                        <div>
+                            <a href="#">Sealing film</a><a href="#">Beakers</a><a href="#">Filter funnels</a>
+                            <a href="#">Water jet pumps</a><a href="#">Connectors</a>
+                            <a href="#">Magnetic stirring bars</a><a href="#">Instrument storage</a>
+                            <a href="#">Sample storage</a><a href="#">Cleaning</a>
+                            <a href="#">Inoculation loops</a><a href="#">Pipettes</a>
+                            <a href="#">Storing boxes</a><a href="#">Density</a>
+                        </div>
+                        <div>
+                            <a href="#">Erlenmeyer flasks</a><a href="#">Funnels</a><a href="#">Desiccators</a>
+                            <a href="#">Tubings</a><a href="#">Stopcocks</a><a href="#">Stirring rods</a>
+                            <a href="#">Sampling</a><a href="#">Dishes</a><a href="#">Containers</a>
+                            <a href="#">Disposal bags</a><a href="#">Microscopy</a>
+                            <a href="#">Tubes</a><a href="#">Racks</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="#">Promotions</a></li>
+            <li><a href="#">OEM</a></li>
+            <li><a href="#">Certificates</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-text"></div>
+        <div class="hero-sale">SALE</div>
+        <div class="badge-sale">%</div>
+    </section>
+
+    <!-- PRODUCT RECOMMENDATIONS -->
+    <section class="section">
+        <div class="recs-grid">
+            <div>
+                <h2 class="section-title sr" style="text-align:left;margin-bottom:20px;">Our product recommendations for
+                    you</h2>
+                <div class="products-row">
+                    <div class="product-card sr d1">
+                        <span class="promo-badge">PROMO</span>
+                        <div class="product-img-placeholder"><img
+                                src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779262943/Screenshot_2026-05-20_131002_empckl.png"
+                                alt="Dispensette S"></div>
+                        <p>Bottle-top dispensers<br>Dispensette® S, analog-adjustable, DE-M</p>
+                        <a href="product.html" class="btn-product">VIEW PRODUCT →</a>
+                    </div>
+                    <div class="product-card sr d2">
+                        <span class="promo-badge">PROMO</span>
+                        <div class="product-img-placeholder"><img
+                                src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779262943/Screenshot_2026-05-20_131002_empckl.png"
+                                alt="HandyStep touch"></div>
+                        <p>Repetitive pipettes<br>HandyStep® touch, DE-M</p>
+                        <a href="product.html" class="btn-product">VIEW PRODUCT →</a>
+                    </div>
+                    <div class="product-card sr d3">
+                        <div class="product-img-placeholder"><img
+                                src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779262943/Screenshot_2026-05-20_131002_empckl.png"
+                                alt="Transferpette S single"></div>
+                        <p>Single-channel micropipette<br>Transferpette® S, adjustable, DE-M</p>
+                        <a href="product.html" class="btn-product">VIEW PRODUCT →</a>
+                    </div>
+                    <div class="product-card sr d4">
+                        <div class="product-img-placeholder"><img
+                                src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779262943/Screenshot_2026-05-20_131002_empckl.png"
+                                alt="Transferpette S multi"></div>
+                        <p>Multi-channel micropipette<br>Transferpette® S, adjustable, DE-M</p>
+                        <a href="product.html" class="btn-product">VIEW PRODUCT →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="help-box sr d2">
+                <h3>Help with your purchase</h3>
+                <div class="help-item">
+                    <div class="help-icon">🛒</div>
+                    <div class="help-item-text"><strong>Create Account</strong><a href="#">→ more information</a></div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">%</div>
+                    <div class="help-item-text"><strong>Special offers</strong><a href="#">→ more information</a></div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">👤</div>
+                    <div class="help-item-text"><strong>Contact person</strong><a href="#">→ more information</a></div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">💬</div>
+                    <div class="help-item-text"><strong>Contact</strong><a href="#">→ more information</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CATEGORIES -->
+    <section class="section cat-section">
+        <h2 class="section-title sr">All products for Life Science and Liquid Handling</h2>
+        <div class="categories">
+            <div class="cat-card sr d1">
+                <div class="cat-img">🧫</div>
+                <h4>Liquid Handling</h4><a href="#" class="btn-product">VIEW PRODUCTS →</a>
+            </div>
+            <div class="cat-card sr d2">
+                <div class="cat-img">🔬</div>
+                <h4>Life Science Consumables</h4><a href="#" class="btn-product">VIEW PRODUCTS →</a>
+            </div>
+            <div class="cat-card sr d3">
+                <div class="cat-img">🤖</div>
+                <h4>Pipetting Robots</h4><a href="#" class="btn-product">VIEW PRODUCTS →</a>
+            </div>
+            <div class="cat-card sr d4">
+                <div class="cat-img">⚗️</div>
+                <h4>Volumetric Instruments</h4><a href="#" class="btn-product">VIEW PRODUCTS →</a>
+            </div>
+            <div class="cat-card sr d5">
+                <div class="cat-img">🧪</div>
+                <h4>General Lab Products</h4><a href="#" class="btn-product">VIEW PRODUCTS →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section">
+        <h2 class="section-title sr">Our services make your work more efficient</h2>
+        <p class="sr d1" style="text-align:center;color:var(--muted);margin-top:-16px;margin-bottom:28px;">At a glance
+        </p>
+        <div class="services-grid">
+            <div class="service-card sr d1">
+                <div class="service-icon">📄</div>
+                <h4>MyProduct product documentation</h4>
+                <p>Certificates of performance, technical documentation for your individual Transferpette® and
+                    BLAUBRAND® volumetric instrument</p>
+                <a href="#">→ more information</a>
+            </div>
+            <div class="service-card sr d2">
+                <div class="service-icon">🔧</div>
+                <h4>Calibration and maintenance</h4>
+                <p>Maintenance and repair services and accredited DAkkS calibration lab</p>
+                <a href="#">→ more information</a>
+            </div>
+            <div class="service-card sr d3">
+                <div class="service-icon">💾</div>
+                <h4>Software</h4>
+                <p>Free download of the EASYCAL™ calibration software and the software for your Titrette®</p>
+                <a href="#">→ more information</a>
+            </div>
+            <div class="service-card sr d4">
+                <div class="service-icon">📋</div>
+                <h4>Application information</h4>
+                <p>Application Notes and Testing Instructions (SOP)</p>
+                <a href="#">→ more information</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY OMSONS -->
+    <section class="why-omsons">
+        <div class="why-inner">
+            <p class="why-heading sr">The OMSONS difference</p>
+            <h2 class="sr d1">Why <span>OMSONS?</span></h2>
+            <p class="why-lead sr d2">For over four decades, OMSONS has been at the forefront of scientific instrument
+                manufacturing — engineering precision tools that empower researchers, clinicians, and industry
+                professionals to achieve results they can trust.</p>
+            <div class="why-pillars">
+                <div class="why-pillar sr d1">
+                    <div class="pillar-icon">🔬</div>
+                    <h4>ISO-Certified Precision Manufacturing</h4>
+                    <p>Every instrument leaves our facility having passed rigorous metrological validation. Our in-house
+                        calibration laboratory is accredited to international standards, ensuring your data is always
+                        defensible.</p>
+                </div>
+                <div class="why-pillar sr d2">
+                    <div class="pillar-icon">🧬</div>
+                    <h4>Purpose-Built for Life Sciences</h4>
+                    <p>From volumetric glassware to liquid handling systems, our product range is engineered
+                        specifically for biological, pharmaceutical, and analytical workflows — not adapted from
+                        general-purpose tools.</p>
+                </div>
+                <div class="why-pillar sr d3">
+                    <div class="pillar-icon">⚗️</div>
+                    <h4>Traceable to SI Units</h4>
+                    <p>All OMSONS volumetric instruments carry full traceability documentation linked to national
+                        measurement standards — a non-negotiable requirement for GLP, GMP, and ISO 17025-compliant
+                        laboratories.</p>
+                </div>
+                <div class="why-pillar sr d1">
+                    <div class="pillar-icon">🛡️</div>
+                    <h4>Uncompromising Material Quality</h4>
+                    <p>We use only pharmaceutical-grade borosilicate glass, chemical-resistant polymers, and inert metal
+                        alloys — materials selected for their compatibility with the most demanding reagents and
+                        solvents.</p>
+                </div>
+                <div class="why-pillar sr d2">
+                    <div class="pillar-icon">🌍</div>
+                    <h4>Global Reach, Local Support</h4>
+                    <p>Through our international distribution network spanning 40+ countries, OMSONS provides responsive
+                        technical support, rapid spare-part delivery, and on-site service wherever your laboratory is
+                        located.</p>
+                </div>
+                <div class="why-pillar sr d3">
+                    <div class="pillar-icon">📊</div>
+                    <h4>Data Integrity by Design</h4>
+                    <p>Our instruments are designed with audit trails, error-detection mechanisms, and digital
+                        connectivity in mind — helping your laboratory maintain full data integrity from measurement to
+                        record.</p>
+                </div>
+            </div>
+            <div class="why-stats">
+                <div class="why-stat sr d1">
+                    <div class="num">40+</div>
+                    <div class="label">Years in Science</div>
+                </div>
+                <div class="why-stat sr d2">
+                    <div class="num">500+</div>
+                    <div class="label">Product SKUs</div>
+                </div>
+                <div class="why-stat sr d3">
+                    <div class="num">40+</div>
+                    <div class="label">Countries Served</div>
+                </div>
+                <div class="why-stat sr d4">
+                    <div class="num">ISO</div>
+                    <div class="label">Certified Facility</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SALES NETWORK -->
+    <section class="sales-network" id="salesNetwork">
+        <h2 class="reveal-text">Sales Network, Corporate Stores and Contacts</h2>
+        <p class="sub reveal-text delay-1">We have a wide sales network and a number of partners around the world.</p>
+        <div class="map-wrap reveal-text delay-2">
+            <img src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779267796/Screenshot_2026-05-20_143154_gunx3r.png"
+                alt="World sales network map" class="map-img" />
+            <div class="distributor-img-wrap" id="distCard">
+                <img src="https://res.cloudinary.com/dzrg0utcm/image/upload/v1779264138/omsons_t6lwp1.jpg"
+                    alt="Our Largest Distributor" class="distributor-img" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         VIDEO SECTION
+    ══════════════════════════════════ -->
+    <section class="video-section" id="videoSection">
+        <h2 class="sr">See OMSONS in Action</h2>
+        <p class="video-sub sr d1">Precision engineering, purpose-built for the modern laboratory</p>
+        <div class="video-wrap" id="videoWrap">
+            <div class="video-container">
+                <video id="omsonsVideo" controls muted playsinline preload="metadata">
+                    <source src="https://res.cloudinary.com/dzrg0utcm/video/upload/v1779269772/omsons1_nakmxk.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER TEXT COLS -->
+    <div class="footer-cols">
+        <div class="sr">
+            <h4>The brand for your laboratory</h4>
+            <p>As an independent family business based in Germany, BRAND has been a trusted partner and reference in the
+                laboratory for over 75 years. BRAND develops, manufactures and distributes innovative laboratory
+                equipment of premium quality.</p>
+        </div>
+        <div class="sr d1">
+            <h4>Consultation and application support for laboratory instruments and consumables</h4>
+            <p>From Liquid Handling to Life Science Consumables to Pipetting Robots – discover the diverse products
+                available for laboratory applications from BRAND. We offer consultation and application support at the
+                highest level.</p>
+        </div>
+        <div class="sr d2">
+            <h4>Work easily and efficiently in the laboratory</h4>
+            <p>At BRAND, our goal is to make your laboratory work easier, faster, and more efficient – whether you're
+                working in the biopharma, analytics, or chemical fields.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <div class="footer-nav">
+        <div>
+            <h5>Liquid Handling</h5>
+            <a href="#">Bottle-top dispensers</a><a href="#">Bottle-top burettes</a>
+            <a href="#">Micropipettes</a><a href="#">Tips</a><a href="#">Pipetting aids</a>
+            <a href="#">Repetitive pipettes</a><a href="#">PD-Tips</a>
+        </div>
+        <div>
+            <h5>Pipetting robots</h5>
+            <a href="#">PIPETBOY acu 2</a><a href="#">HandyStep® touch</a><a href="#">Transferpette® S</a>
+        </div>
+        <div>
+            <h5>Life Science Consumables</h5>
+            <a href="#">Microcentrifuge tubes</a><a href="#">PCR consumables</a>
+            <a href="#">Sample storage</a><a href="#">Microplates</a><a href="#">Cuvettes</a>
+        </div>
+        <div>
+            <h5>Volumetric Instruments</h5>
+            <a href="#">Volumetric flasks</a><a href="#">Bulb pipettes</a>
+            <a href="#">Graduated pipettes</a><a href="#">Burettes</a>
+        </div>
+        <div>
+            <h5>General Lab Products</h5>
+            <a href="#">Sealing film</a><a href="#">Erlenmeyer flasks</a>
+            <a href="#">Beakers</a><a href="#">Funnels</a><a href="#">Desiccators</a>
+            <a href="#">Tubings</a><a href="#">Stopcocks</a><a href="#">Stirring rods</a>
+            <a href="#">Racks</a><a href="#">Tubes</a>
+        </div>
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div class="footer-bottom">
+        <div>
+            <div class="payment-icons">
+                <span class="pay-badge">PayPal</span>
+                <span class="pay-badge">VISA</span>
+                <span class="pay-badge">MC</span>
+                <span class="pay-badge">Mastercard</span>
+            </div>
+            <div style="margin-top:6px;">Note: Our offer is directed exclusively to traders.</div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="#">Transferpette</a><a href="#">Complaint</a>
+            <a href="#">Terms and conditions</a><a href="#">Privacy statement</a>
+            <a href="#">Imprint</a><a href="#">Disclaimer</a><a href="#">Cookie Settings</a>
+        </div>
+        <div>© 2025 OMSONS</div>
+    </div>
+
+    <script>
+        // ── Global scroll-reveal ──
+        const srEls = document.querySelectorAll('.sr');
+        const srObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    srObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        srEls.forEach(el => srObserver.observe(el));
+
+        // ── Sales network reveal ──
+        const salesSection = document.getElementById('salesNetwork');
+        const revealEls = salesSection.querySelectorAll('.reveal-text');
+        const distCard = document.getElementById('distCard');
+        const salesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    revealEls.forEach(el => el.classList.add('visible'));
+                    distCard.classList.add('visible');
+                    salesObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        salesObserver.observe(salesSection);
+
+        // ── Video: slide-in reveal + autoplay on scroll ──
+        const videoWrap = document.getElementById('videoWrap');
+        const videoEl = document.getElementById('omsonsVideo');
+
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate in
+                    videoWrap.classList.add('visible');
+                    // Autoplay (muted is required by browsers for autoplay to work)
+                    videoEl.play().catch(() => {
+                        // Blocked by browser policy — user can press play manually
+                    });
+                    videoObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.30 });
+
+        videoObserver.observe(videoWrap);
+    </script>
+
+</body>
+
+</html>
