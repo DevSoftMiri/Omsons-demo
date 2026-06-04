@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bottle-top Dispensers Dispensette® S, analog-adjustable, DE-M – Omsons</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
     <style>
         :root {
@@ -34,47 +33,28 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--white);
             color: var(--text-primary);
             font-size: 14px;
             line-height: 1.6;
         }
 
-        /* ═══ TOP UTILITY BAR ═══ */
-        .topbar {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 5px 40px;
-            font-size: 12px;
-            color: var(--text-muted);
-            gap: 6px;
-        }
-
-        .topbar a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .topbar a:hover {
-            color: var(--brand-blue);
-        }
-
-        .topbar .region-selector {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .topbar .region-selector svg {
-            width: 12px;
-            height: 12px;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .product-title,
+        .section-title,
+        .section-title,
+        .help-box-title,
+        .mega-col-title,
+        .mega-promo-title,
+        .navbar-text-links a,
+        .brand-tagline {
+            font-family: 'Manrope', sans-serif;
         }
 
         /* ═══ MAIN NAVBAR ═══ */
@@ -116,6 +96,7 @@
         }
 
         .navbar-text-links a {
+            font-family: 'Manrope', sans-serif;
             font-size: 14px;
             font-weight: 600;
             color: var(--brand-blue);
@@ -157,7 +138,7 @@
             outline: none;
             padding: 10px 16px;
             font-size: 13.5px;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
             background: transparent;
         }
@@ -172,17 +153,17 @@
             padding: 10px 22px;
             font-size: 13px;
             font-weight: 700;
+            font-family: 'Manrope', sans-serif;
             color: var(--white);
             cursor: pointer;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            font-family: inherit;
             transition: background 0.18s;
             white-space: nowrap;
         }
 
         .navbar-search button:hover {
-            background: #d4900a;
+            background: #0d2f6a;
         }
 
         .navbar-actions {
@@ -226,6 +207,7 @@
         }
 
         .action-item span {
+            font-family: 'Inter', sans-serif;
             font-size: 11px;
             color: var(--text-secondary);
             font-weight: 500;
@@ -253,6 +235,7 @@
         }
 
         .brand-tagline {
+            font-family: 'Manrope', sans-serif;
             background: var(--brand-teal);
             color: white;
             font-size: 12px;
@@ -288,6 +271,7 @@
         .navbar-menu ul li a {
             display: block;
             padding: 14px 18px;
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.88);
@@ -307,6 +291,7 @@
         /* ═══ BREADCRUMB ═══ */
         .breadcrumb {
             padding: 10px 40px;
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
             color: var(--text-muted);
             background: var(--white);
@@ -325,84 +310,6 @@
         .breadcrumb span {
             margin: 0 6px;
             color: #c0c8d4;
-        }
-
-        /* ═══ SECTION NAV ═══ */
-        .section-nav {
-            background: var(--white);
-            border-bottom: 2px solid var(--border);
-            border-top: 1px solid var(--border);
-            position: sticky;
-            top: 131px;
-            z-index: 198;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .section-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .section-nav-inner {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            padding: 0 40px;
-            min-width: max-content;
-        }
-
-        .sec-nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            padding: 13px 20px;
-            border: none;
-            background: transparent;
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            cursor: pointer;
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
-            position: relative;
-            top: 2px;
-            letter-spacing: 0.2px;
-        }
-
-        .sec-nav-btn:hover {
-            color: var(--brand-blue);
-            background: #f4f7fb;
-        }
-
-        .sec-nav-btn.active {
-            color: var(--brand-teal);
-            border-bottom-color: var(--brand-teal);
-        }
-
-        .sec-nav-btn .nav-icon {
-            font-size: 15px;
-            line-height: 1;
-        }
-
-        .sec-nav-btn .nav-arrow {
-            font-size: 10px;
-            color: var(--text-muted);
-            transition: transform 0.2s;
-            margin-left: 2px;
-        }
-
-        .sec-nav-btn.active .nav-arrow {
-            transform: rotate(180deg);
-            color: var(--brand-teal);
-        }
-
-        .sec-nav-divider {
-            width: 1px;
-            height: 20px;
-            background: var(--border);
-            flex-shrink: 0;
         }
 
         /* ═══ MAIN LAYOUT ═══ */
@@ -487,6 +394,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Inter', sans-serif;
             font-size: 10px;
             color: var(--text-muted);
             transition: border-color 0.2s;
@@ -513,6 +421,7 @@
             gap: 6px;
             background: #e8f5e9;
             color: #2e7d32;
+            font-family: 'Inter', sans-serif;
             font-size: 11px;
             font-weight: 600;
             padding: 4px 10px;
@@ -523,8 +432,9 @@
         }
 
         .product-title {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Manrope', sans-serif;
             font-size: 26px;
+            font-weight: 700;
             color: var(--brand-blue);
             line-height: 1.3;
         }
@@ -534,6 +444,7 @@
         }
 
         .product-subtitle {
+            font-family: 'Inter', sans-serif;
             font-size: 14px;
             color: var(--text-secondary);
             font-style: italic;
@@ -550,6 +461,7 @@
             display: flex;
             align-items: flex-start;
             gap: 8px;
+            font-family: 'Inter', sans-serif;
             font-size: 13.5px;
         }
 
@@ -563,6 +475,7 @@
         }
 
         .product-description {
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.7;
@@ -579,6 +492,7 @@
         }
 
         .customise-section label {
+            font-family: 'Manrope', sans-serif;
             font-size: 12px;
             font-weight: 600;
             color: var(--text-muted);
@@ -597,8 +511,8 @@
             border: 1.5px solid var(--border);
             border-radius: 20px;
             background: white;
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
-            font-family: inherit;
             cursor: pointer;
             transition: all 0.18s;
             color: var(--text-primary);
@@ -626,9 +540,9 @@
             border: none;
             padding: 12px 28px;
             border-radius: 7px;
+            font-family: 'Manrope', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            font-family: inherit;
             cursor: pointer;
             letter-spacing: 0.3px;
             transition: background 0.2s;
@@ -644,9 +558,9 @@
             border: 1.5px solid var(--brand-blue);
             padding: 12px 20px;
             border-radius: 7px;
+            font-family: 'Manrope', sans-serif;
             font-size: 13px;
             font-weight: 600;
-            font-family: inherit;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -672,15 +586,11 @@
             justify-content: space-between;
             padding-bottom: 14px;
             border-bottom: 2px solid #f4f7fb;
+            margin-bottom: 0;
         }
 
-        /* Default: header visible, body hidden */
         .section.collapsed .section-body {
             display: none;
-        }
-
-        .section-header {
-            margin-bottom: 0;
         }
 
         .section:not(.collapsed) .section-header {
@@ -688,8 +598,9 @@
         }
 
         .section-title {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Manrope', sans-serif;
             font-size: 20px;
+            font-weight: 700;
             color: var(--brand-blue);
         }
 
@@ -729,6 +640,7 @@
         .models-table thead th {
             padding: 11px 10px;
             text-align: center;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
             font-size: 11px;
             letter-spacing: 0.3px;
@@ -761,12 +673,14 @@
         .models-table td {
             padding: 10px;
             text-align: center;
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
         }
 
         .models-table td:first-child {
             text-align: left;
             padding-left: 14px;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
             color: var(--brand-blue);
         }
@@ -794,8 +708,8 @@
             border: none;
             padding: 6px 14px;
             border-radius: 5px;
+            font-family: 'Manrope', sans-serif;
             font-size: 11px;
-            font-family: inherit;
             font-weight: 600;
             cursor: pointer;
             white-space: nowrap;
@@ -812,8 +726,8 @@
             border: 1.5px solid var(--brand-blue);
             padding: 6px 12px;
             border-radius: 5px;
+            font-family: 'Manrope', sans-serif;
             font-size: 11px;
-            font-family: inherit;
             font-weight: 600;
             cursor: pointer;
             white-space: nowrap;
@@ -839,6 +753,7 @@
         .acc-table thead th {
             padding: 10px 14px;
             text-align: left;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
             color: var(--brand-blue);
             font-size: 12px;
@@ -855,6 +770,7 @@
 
         .acc-table td {
             padding: 10px 14px;
+            font-family: 'Inter', sans-serif;
         }
 
         .acc-table td:last-child {
@@ -871,6 +787,7 @@
         .link-blue {
             color: var(--brand-teal);
             text-decoration: none;
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
         }
 
@@ -884,8 +801,8 @@
             border: none;
             padding: 5px 11px;
             border-radius: 4px;
+            font-family: 'Manrope', sans-serif;
             font-size: 10px;
-            font-family: inherit;
             font-weight: 600;
             cursor: pointer;
             letter-spacing: 0.3px;
@@ -929,11 +846,13 @@
         }
 
         .chart-card p {
+            font-family: 'Inter', sans-serif;
             font-size: 11px;
             color: var(--text-secondary);
             font-weight: 500;
         }
 
+        /* ═══ QUICK NAV ═══ */
         .product-quick-nav {
             display: flex;
             flex-wrap: wrap;
@@ -951,7 +870,7 @@
             color: var(--brand-blue);
             padding: 12px 18px;
             border-radius: 8px;
-            font-family: inherit;
+            font-family: 'Manrope', sans-serif;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
@@ -1003,6 +922,7 @@
         .video-label {
             padding: 10px 12px;
             background: white;
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
             color: var(--text-secondary);
         }
@@ -1037,6 +957,7 @@
         }
 
         .related-card h4 {
+            font-family: 'Manrope', sans-serif;
             font-size: 13px;
             color: var(--brand-blue);
             font-weight: 600;
@@ -1044,6 +965,7 @@
         }
 
         .related-card p {
+            font-family: 'Inter', sans-serif;
             font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 12px;
@@ -1055,6 +977,7 @@
             color: #8fb3d4;
             padding: 32px;
             text-align: center;
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
             margin-top: 40px;
         }
@@ -1106,6 +1029,52 @@
             margin: 16px 0;
         }
 
+        /* Items Supplied list */
+        .supplied-list {
+            margin-top: 12px;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .supplied-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+        }
+
+        /* Downloads */
+        .download-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            background: #f4f7fb;
+            transition: border-color 0.2s;
+        }
+
+        .download-link:hover {
+            border-color: var(--brand-teal);
+        }
+
+        /* Misc inline text */
+        .table-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            text-align: right;
+        }
+
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 1024px) {
             .navbar-text-links {
@@ -1119,14 +1088,6 @@
             .navbar-menu {
                 padding: 0 20px;
                 top: 80px;
-            }
-
-            .section-nav {
-                top: 131px;
-            }
-
-            .section-nav-inner {
-                padding: 0 20px;
             }
         }
 
@@ -1156,16 +1117,6 @@
 </head>
 
 <body>
-
-    <!-- ═══ TOP UTILITY BAR ═══ -->
-    <!-- <div class="topbar">
-        <div class="region-selector">
-            Europe – EN
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="2,4 6,8 10,4" />
-            </svg>
-        </div>
-    </div> -->
 
     <!-- ═══ MAIN NAVBAR ═══ -->
     <header class="navbar-main">
@@ -1229,8 +1180,6 @@
         <span style="color:var(--text-primary)">Dispensette® S, analog-adjustable, DE-M</span>
     </div>
 
-
-
     <!-- ═══ MAIN CONTENT ═══ -->
     <div class="main-wrap">
 
@@ -1291,30 +1240,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- QUICK NAV -->
         <div class="product-quick-nav">
-            <button class="quick-nav-btn" data-target="sec-models">
-                📋 Models
-            </button>
-
-            <button class="quick-nav-btn" data-target="sec-supplied">
-                📦 Items Supplied
-            </button>
-
-            <button class="quick-nav-btn" data-target="sec-accessories">
-                🔩 Accessories
-            </button>
-
-            <button class="quick-nav-btn" data-target="sec-charts">
-                📊 Selection Charts
-            </button>
-
-            <button class="quick-nav-btn" data-target="sec-videos">
-                ▶ Videos
-            </button>
-
-            <button class="quick-nav-btn" data-target="sec-downloads">
-                ⬇ Downloads
-            </button>
+            <button class="quick-nav-btn" data-target="sec-models">📋 Models</button>
+            <button class="quick-nav-btn" data-target="sec-supplied">📦 Items Supplied</button>
+            <button class="quick-nav-btn" data-target="sec-accessories">🔩 Accessories</button>
+            <button class="quick-nav-btn" data-target="sec-charts">📊 Selection Charts</button>
+            <button class="quick-nav-btn" data-target="sec-videos">▶ Videos</button>
+            <button class="quick-nav-btn" data-target="sec-downloads">⬇ Downloads</button>
         </div>
 
         <!-- MODELS TABLE -->
@@ -1464,8 +1398,8 @@
                         </tbody>
                     </table>
                 </div>
-                <p style="font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right">* Prices exclude GST.
-                    RV = Recirculation Valve included. Prices subject to change.</p>
+                <p class="table-note">* Prices exclude GST. RV = Recirculation Valve included. Prices subject to change.
+                </p>
             </div>
         </div>
 
@@ -1476,21 +1410,15 @@
                 <button class="section-toggle">⊕</button>
             </div>
             <div class="section-body">
-                <p style="font-size:13px;color:var(--text-secondary)">Each Dispensette® S unit is delivered complete and
-                    ready for use, including:</p>
-                <ul style="margin-top:12px;list-style:none;display:flex;flex-direction:column;gap:8px;">
-                    <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
-                            style="color:var(--brand-teal)">▸</span> Bottle-top dispenser unit (assembled)</li>
-                    <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
-                            style="color:var(--brand-teal)">▸</span> Adjustable intake tube</li>
-                    <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
-                            style="color:var(--brand-teal)">▸</span> Safety discharge tube</li>
-                    <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
-                            style="color:var(--brand-teal)">▸</span> Bottle adapter (GL 45)</li>
-                    <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
-                            style="color:var(--brand-teal)">▸</span> Calibration certificate (DE-M)</li>
-                    <li style="display:flex;align-items:center;gap:8px;font-size:13px"><span
-                            style="color:var(--brand-teal)">▸</span> Operating instructions (DE / EN / FR)</li>
+                <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-secondary)">Each Dispensette® S
+                    unit is delivered complete and ready for use, including:</p>
+                <ul class="supplied-list">
+                    <li><span style="color:var(--brand-teal)">▸</span> Bottle-top dispenser unit (assembled)</li>
+                    <li><span style="color:var(--brand-teal)">▸</span> Adjustable intake tube</li>
+                    <li><span style="color:var(--brand-teal)">▸</span> Safety discharge tube</li>
+                    <li><span style="color:var(--brand-teal)">▸</span> Bottle adapter (GL 45)</li>
+                    <li><span style="color:var(--brand-teal)">▸</span> Calibration certificate (DE-M)</li>
+                    <li><span style="color:var(--brand-teal)">▸</span> Operating instructions (DE / EN / FR)</li>
                 </ul>
             </div>
         </div>
@@ -1628,22 +1556,10 @@
             </div>
             <div class="section-body">
                 <div style="display:flex;gap:12px;flex-wrap:wrap">
-                    <a href="#"
-                        style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:#f4f7fb;transition:border-color 0.2s"
-                        onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄
-                        Operating Manual (EN/DE)</a>
-                    <a href="#"
-                        style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:#f4f7fb;transition:border-color 0.2s"
-                        onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄
-                        CE Declaration</a>
-                    <a href="#"
-                        style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:#f4f7fb;transition:border-color 0.2s"
-                        onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄
-                        Calibration Certificate</a>
-                    <a href="#"
-                        style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:var(--text-primary);font-size:13px;background:#f4f7fb;transition:border-color 0.2s"
-                        onmouseover="this.style.borderColor='#009bbd'" onmouseout="this.style.borderColor='#dce3ec'">📄
-                        ATEX Certificate</a>
+                    <a href="#" class="download-link">📄 Operating Manual (EN/DE)</a>
+                    <a href="#" class="download-link">📄 CE Declaration</a>
+                    <a href="#" class="download-link">📄 Calibration Certificate</a>
+                    <a href="#" class="download-link">📄 ATEX Certificate</a>
                 </div>
             </div>
         </div>
@@ -1717,45 +1633,29 @@
             });
         });
 
-        // Section nav buttons
+        // Quick nav buttons
         document.querySelectorAll('.quick-nav-btn').forEach(btn => {
             btn.addEventListener('click', function () {
-
                 const targetId = this.dataset.target;
                 const section = document.getElementById(targetId);
-
                 if (!section) return;
 
                 section.classList.remove('collapsed');
-
-                document.querySelectorAll('.quick-nav-btn')
-                    .forEach(b => b.classList.remove('active'));
-
+                document.querySelectorAll('.quick-nav-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
 
-                const top =
-                    section.getBoundingClientRect().top +
-                    window.pageYOffset -
-                    100;
-
-                window.scrollTo({
-                    top,
-                    behavior: 'smooth'
-                });
+                const top = section.getBoundingClientRect().top + window.pageYOffset - 100;
+                window.scrollTo({ top, behavior: 'smooth' });
             });
         });
-        // Inner ⊕ toggle buttons sync with nav
+
+        // Section toggle buttons
         document.querySelectorAll('.section-toggle').forEach(btn => {
             btn.addEventListener('click', function () {
                 const section = this.closest('.section');
                 if (!section) return;
                 section.classList.toggle('collapsed');
                 this.textContent = section.classList.contains('collapsed') ? '⊞' : '⊕';
-                const id = section.id;
-                const navBtn = document.querySelector(`.sec-nav-btn[data-target="${id}"]`);
-                if (navBtn) {
-                    navBtn.classList.toggle('active', !section.classList.contains('collapsed'));
-                }
             });
         });
     </script>
